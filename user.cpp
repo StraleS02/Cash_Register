@@ -21,11 +21,11 @@ void delete_list(USER**);
 void add_to_list(USER** head, USER* nuevo);
 
 FILE* safe_open(char* name, char* mode) {     //file opening function
-    FILE* f = fopen(name, surename);
+    FILE* f = fopen(name, mode);
 
     if (f == NULL) {
         printf("Error loading file %s\n", name);
-        exit(err_code);
+        exit(EXIT_FAILURE);
     }
     return f;
 }
