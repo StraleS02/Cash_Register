@@ -12,7 +12,7 @@ typedef struct user {                                           //structure of a
     struct user *sl;
 }USER;
 
-FILE* safe_open(char*, char*, int);                             //prototypes of used functions
+FILE* safe_open(char*, char*);                             //prototypes of used functions
 void load(FILE*, USER**);
 USER* make_user(char*, char*, int);
 
@@ -20,7 +20,7 @@ void list_init(USER**);
 void delete_list(USER**);
 void add_to_list(USER** head, USER* nuevo);
 
-FILE* safe_open(char* name, char* surename, int err_code) {     //file opening function
+FILE* safe_open(char* name, char* mode) {     //file opening function
     FILE* f = fopen(name, surename);
 
     if (f == NULL) {
