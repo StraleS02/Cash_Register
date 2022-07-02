@@ -23,7 +23,7 @@ int main() {
 		printf("user not found");
 	}
 	else {
-		printf("%s %s", person->name, person->surename);
+		printf("%s %s", &person->name, &person->surename);
 	}
 	delete_list(&head);
 	return EXIT_SUCCESS;
