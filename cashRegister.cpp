@@ -12,13 +12,14 @@ int main() {
 	USER* head;
 	int code;
 	USER* person;
+	int NofScannedArguments = 0;
 	printf("enter your code: ");
-	scanf("%d", &code);
+	NofScannedArguments=scanf("%d", &code);
 	FILE* users = safe_open("user.txt", "r");
 	list_init(&head);
 	load(users, &head);
 	fclose(users);
-	person=searchElement(head, code);
+	person=searchElement(head, NofScannedArguments);
 	if (person == NULL) {
 		printf("user not found");
 	}
