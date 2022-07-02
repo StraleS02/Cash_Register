@@ -1,24 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "user.h"
 
 #define MAX_NAME 20
 #define MAX_SNAME 30
-
-typedef struct user {                                           //structure of a user
-	char name;
-	char surename;
-	int code;
-    struct user *sl;
-}USER;
-
-FILE* safe_open(const char*, const char*);                             //prototypes of used functions
-void load(FILE*, USER**);
-USER* make_user(char*, char*, int);
-
-void list_init(USER**);
-void delete_list(USER**);
-void add_to_list(USER** head, USER* nuevo);
 
 FILE* safe_open(const char* name, const char* mode) {     //file opening function
     FILE* f = fopen(name, mode);
@@ -88,20 +71,18 @@ USER* make_user(char* name, char* surename, int code) {         //loading struct
     return nuevo;
 }
 
-int searchElement(USER* head, int code)                         //list search function
+USER* searchElement(USER* head, int code)                         //list search function
 {
     USER* current = head;
-    char name[MAX_NAME],
-        surename[MAX_SNAME];
+   // char* name[MAX_NAME],
+        //surename[MAX_SNAME];
 
     while (current != NULL)
     {
         if (current->code == code) {
-            printf("%s %s", name, surename);
-            return 0;
+            return current;
         }
         current = current->sl;
     }
-    printf("non existing user");
-    return -1;
+    return NULL;
 }

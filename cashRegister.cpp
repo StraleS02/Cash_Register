@@ -1,18 +1,34 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "user.cpp"
-
+#include "user.h"
+#pragma warning(push)
+#pragma warning(disable: 6001)
+#pragma warning(push)
+#pragma warning(disable: 4101)
+#pragma warning(push)
+#pragma warning(disable: 4477)
+#pragma warning(push)
+#pragma warning(disable: 4313)
 int main() {
+	
 	USER* head;
-	//int x=123;
+	int code;
+	USER* person;
+	printf("enter your code: ");
+	scanf("%d", &code);
 	FILE* users = safe_open("user.txt", "r");
 	list_init(&head);
 	load(users, &head);
 	fclose(users);
-	//printf("enter your code: ");
-	//scanf_s("%d", &x);
-	//int n=searchElement(head, x);
+	person=searchElement(head, code);
+	if (person == NULL) {
+		printf("user not found");
+	}
+	else {
+		printf("%s %s", person->name, person->surename);
+	}
 	delete_list(&head);
 	return EXIT_SUCCESS;
 }
+#pragma warning(pop)
+#pragma warning(pop)
+#pragma warning(pop)
+#pragma warning(pop)
