@@ -12,7 +12,7 @@ typedef struct user {                                           //structure of a
     struct user *sl;
 }USER;
 
-FILE* safe_open(char*, char*);                             //prototypes of used functions
+FILE* safe_open(const char*, const char*);                             //prototypes of used functions
 void load(FILE*, USER**);
 USER* make_user(char*, char*, int);
 
@@ -20,7 +20,7 @@ void list_init(USER**);
 void delete_list(USER**);
 void add_to_list(USER** head, USER* nuevo);
 
-FILE* safe_open(char* name, char* mode) {     //file opening function
+FILE* safe_open(const char* name, const char* mode) {     //file opening function
     FILE* f = fopen(name, mode);
 
     if (f == NULL) {
@@ -62,7 +62,6 @@ void add_to_list(USER** head, USER* nuevo) {                    //adding user to
 
 void load(FILE* f, USER** head) {                               //loading users from text file to list function
     int code;
-    int index;
     char name[MAX_NAME],
         surename[MAX_SNAME];
 
@@ -104,4 +103,5 @@ int searchElement(USER* head, int code)                         //list search fu
         current = current->sl;
     }
     printf("non existing user");
+    return -1;
 }
